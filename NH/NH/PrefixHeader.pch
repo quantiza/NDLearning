@@ -13,6 +13,15 @@
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 
 
-#define RED_COLOR   [UIColor redColor]
+#import "FitConsts.h"
+#import "NHUtils.h"
+#import "NHCommonConstant.h"
+#import "UIImageView+WebCache.h"
+#import "NHDefaultHeader.h"
+#import "UIView+Frame.h"
+#import "Masonry.h"
+#import "NHCommonAPIConstant.h"
+#import "UINavigationItem+NHAddition.h"
+#import "MBProgressHUD+NHAddition.h"
 
 #endif /* PrefixHeader_pch */

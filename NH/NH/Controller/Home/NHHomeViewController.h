@@ -7,7 +7,13 @@
 //
 
 #import "NHBaseViewController.h"
+#import "NHServiceListModel.h"
 
 @interface NHHomeViewController : NHBaseViewController
+
+//@property (nonatomic, strong) NSArray *models;
+
+@property (nonatomic, strong) NSArray <NHServiceListModel *>*models;
+
 
 @end

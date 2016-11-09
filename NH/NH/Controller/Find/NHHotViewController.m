@@ -11,6 +11,7 @@
 #import "NHBaseRequest.h"
 #import "NHFindModel.h"
 #import "NHFindCell.h"
+#import "NHTopicViewController.h"
 
 @interface NHHotViewController ()
 
@@ -40,7 +41,7 @@
 
 #pragma mark 头部轮播图
 - (NHFindHeadView *)headerView {
-    if (!_headerView) {
+    if (!_headerView ) {
         _headerView = [[NHFindHeadView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 180)];
     }
     self.tableView.tableHeaderView = _headerView;
@@ -56,14 +57,15 @@
     [request nh_sendRequestWithCompletion:^(id response, BOOL success, NSString *message) {
         if (success) {
             NSLog(@"=======sucess");
+            //接收数据headVeiw数据
             NHFindModel *findModel = [[NHFindModel alloc] initWithDictionary:response];
-            
             self.bannerImgArray = [findModel bannersList];
+            //向headView传递数据
             if (_bannerImgArray.count) {
                 NSLog(@"=======isHaveBanner");
                 [_headerView bannerShow:_bannerImgArray];
             }
-            
+            //接收cell数据
             self.dataArray = [findModel categoryList];
             [self.tableView reloadData];
         }
@@ -87,13 +89,26 @@
 
 - (NHFindCell *)nh_cellAtIndexPath:(NSIndexPath *)indexPath {
     NHFindCell *cell = [NHFindCell cellWithTableView:self.tableView];
-//    if (_dataArray.count==0) {
-//        return cell;
-//    }
     cell.elementModel = self.dataArray[indexPath.row];
+    [cell orderBtn].tag = indexPath.row;
+    [[cell orderBtn] addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
     return cell;
 }
 
+//这里刷新按钮有问题
+- (void)btnClick:(UIButton *)btn {
+    NSLog(@"================%ld", (long)btn.tag);
+    [btn setTitle:@"已订阅" forState:UIControlStateNormal];
+    btn.layer.borderColor = RED_CLOOR.CGColor;
+    [btn setTitleColor:RED_CLOOR forState:UIControlStateNormal];
+}
+
+//选中cell触发事件
+- (void)nh_didSelectCellAtIndexPath:(NSIndexPath *)indexPath cell:(NHBaseTableViewCell *)cell {
+    NHFindModel *element = [[NHFindModel alloc] initWithDictionary:_dataArray[indexPath.row]];
+    NHTopicViewController *topicVC = [[NHTopicViewController alloc] initWithCategoryElement:element];
+    [self pushVc:topicVC];
+}
 
 
 

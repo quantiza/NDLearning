@@ -12,7 +12,7 @@
 
 #pragma mark - HOME / 首页
 /** 内涵动态列表*/
-NSString *const kNHHomeServiceListAPI = @"http://lf.snssdk.com/neihan/service/tabs";;
+NSString *const kNHHomeServiceListAPI = @"http://lf.snssdk.com/neihan/service/tabs";
 /** 内涵当前用户关注的用户发布的动态列表*/
 NSString *const kNHHomeAttentionDynamicListAPI = @"http://lf.snssdk.com/neihan/dongtai/dongtai_list/v1/";
 /** 内涵某个动态评论列表*/

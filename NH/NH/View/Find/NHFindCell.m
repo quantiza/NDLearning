@@ -107,22 +107,6 @@
     return _totalCountL;
 }
 
-- (UIButton *)orderBtn {
-    if (!_orderBtn) {
-        _orderBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        _orderBtn.frame = CGRectMake(kScreenWidth-65, 25, 50, 25);
-        _orderBtn.backgroundColor = BG_GRAY_COLOR;
-        [_orderBtn setTitle:@"订阅" forState:UIControlStateNormal];
-        _orderBtn.layer.cornerRadius = 5.0;
-        _orderBtn.layer.borderColor = RED_CLOOR.CGColor;
-        _orderBtn.layer.borderWidth = 0.5;
-        [_orderBtn setTitleColor:RED_CLOOR forState:UIControlStateNormal];
-        _orderBtn.titleLabel.font = kFont(13);
-        [self.contentView addSubview:_orderBtn];
-    }
-    return _orderBtn;
-}
-
 - (CALayer *)lineLayer {
     return _lineLayer;
 }
@@ -130,4 +114,32 @@
 - (NSString *)keyWord {
     return _keyWord;
 }
+
+- (UIButton *)orderBtn {
+    if (!_orderBtn) {
+        _orderBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        _orderBtn.frame = CGRectMake(kScreenWidth-65, 25, 50, 25);
+        _orderBtn.backgroundColor = kClearColor;
+        [_orderBtn setTitle:@"订阅" forState:UIControlStateNormal];
+        _orderBtn.layer.cornerRadius = 5.0;
+//        _orderBtn.layer.borderColor = RED_CLOOR.CGColor;
+        _orderBtn.layer.borderWidth = 0.5;
+        [_orderBtn setTitleColor:TEXT_COLOR_LEVEL_3 forState:UIControlStateNormal];
+        _orderBtn.titleLabel.font = kFont(13);
+        [self.contentView addSubview:_orderBtn];
+        //添加订阅按钮点击事件
+    }
+    return _orderBtn;
+}
+
+
+
+
+
+
+
+
+
+
+
 @end

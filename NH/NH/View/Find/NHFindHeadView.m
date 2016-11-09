@@ -17,8 +17,8 @@
 
 @property(nonatomic,strong) UIPageControl *pageControl;
 
-
 @end
+
 
 @implementation NHFindHeadView {
     NSInteger lastPage;
@@ -28,18 +28,20 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        nowPage = 0;
-        lastPage = 0;
         [self initViews];
     }
     return self;
 }
 
+
+#pragma mark 初始化视图
 - (void)initViews {
+    nowPage = 0;
+    lastPage = 0;
     self.backgroundColor = kPurpleColor;
 }
 
-
+#pragma mark 展示轮播图
 - (void)bannerShow:(NSMutableArray *)bannerArray {
     UIScrollView *bannerSV = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 180)];
     bannerSV.contentSize = CGSizeMake(kScreenWidth*(bannerArray.count+2), 180);
@@ -70,7 +72,7 @@
     [self pageControl:(bannerArray.count)];
 }
 
-
+#pragma mark 关联pagecontrol
 - (void)pageControl:(NSInteger)pageNum {
     _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(kScreenWidth - 100, self.frame.size.height - 20, 100, 20)];
     [_pageControl setPageIndicatorTintColor:ORANGE_COLOR];
@@ -81,6 +83,7 @@
     [_pageControl addTarget:self action:@selector(pageChange:) forControlEvents:UIControlEventTouchUpInside];
 }
 
+#pragma mark pageControl循环播放逻辑
 - (void) pageChange:(UIPageControl *)pageC {
     UIScrollView *scrollV = (UIScrollView *)[self viewWithTag:101];
     lastPage = nowPage;
@@ -103,8 +106,7 @@
     [scrollV setContentOffset:CGPointMake(kScreenWidth * (pageC.currentPage+1), scrollV.y)];
 }
 
-#pragma mark scrollView代理
-
+#pragma mark scrollView代理 scrollView循环播放逻辑
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     int current = scrollView.contentOffset.x/kScreenWidth;
     NSLog(@"========pageCount=%ld, current=%d", _pageControl.numberOfPages, current);

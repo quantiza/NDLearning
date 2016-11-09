@@ -57,7 +57,7 @@ typedef NS_ENUM(NSUInteger, NHHomeAttentionListType) {
 //#define kStatusBarHeight 20
 #define kTopBarHeight 64
 //#define kToolBarHeight 44
-//#define kTabBarHeight 49
+#define kTabBarHeight 49
 #define kiPhone4_W 320
 #define kiPhone4_H 480
 #define kiPhone5_W 320
@@ -67,9 +67,9 @@ typedef NS_ENUM(NSUInteger, NHHomeAttentionListType) {
 #define kiPhone6P_W 414
 #define kiPhone6P_H 736
 /***  当前屏幕宽度 */
-#define kScreenWidth  [[UIScreen mainScreen] bounds].size.width
+//#define kScreenWidth  [[UIScreen mainScreen] bounds].size.width
 /***  当前屏幕高度 */
-#define kScreenHeight  [[UIScreen mainScreen] bounds].size.height
+//#define kScreenHeight  [[UIScreen mainScreen] bounds].size.height
 /***  普通字体 */
 #define kFont(size) [UIFont systemFontOfSize:size]
 /***  粗体 */

@@ -18,7 +18,6 @@
     path = [path stringByAppendingString:@".archive"];
     BOOL success = [NSKeyedArchiver archiveRootObject:object toFile:path];
     return success;
-    
 }
 
 // 通过文件名从沙盒中找到归档的对象

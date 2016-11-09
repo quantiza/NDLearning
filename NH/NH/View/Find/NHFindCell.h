@@ -15,4 +15,6 @@
 
 - (void)setElementModel:(NSDictionary *)elementModel;
 
+
+- (UIButton *)orderBtn;
 @end
